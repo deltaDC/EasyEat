@@ -1,11 +1,12 @@
-import Review from "../models/review.js"
 import FoodStore from "../models/foodStore.js"
 
 import catchAsync from "../utils/catchAsync.js"
-import ExpressError from "../utils/ExpressError.js"
 
 import { cloudinary } from "../cloudinary/index.js"
 import mbxGeocoding from "@mapbox/mapbox-sdk/services/geocoding.js"
+
+import moment from 'moment/moment.js'
+
 
 const mapBoxToken = process.env.MAPBOX_TOKEN
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken })
@@ -47,7 +48,6 @@ export const postFoodStoreForm = catchAsync(async (req, res, next) => {
         limit: 1
     }).send()
 
-    // if (!req.body.foodstore) throw new ExpressError("invalid foodstore", 400)
     const newFoodStore = new FoodStore(req.body.foodstore)
     // set geometry properties
     newFoodStore.geometry = geoData.body.features[0].geometry
@@ -55,6 +55,8 @@ export const postFoodStoreForm = catchAsync(async (req, res, next) => {
     newFoodStore.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
     // set author of newFoodStore, req.user is already set by passportjs whan logged in
     newFoodStore.author = req.user._id
+    // set createdAt date
+    newFoodStore.createdAt = moment().format("DD-MM-YYYY hh:mm:ss")
     await newFoodStore.save()
     // console.log(newFoodStore)
     req.flash('success', "foodstore created successfully")

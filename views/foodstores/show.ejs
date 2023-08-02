@@ -4,7 +4,7 @@
 
 
 <div class="row">
-    <div class="col-md-6 order-2 order-md-1">
+    <div class="col-md-6">
         <div id="foodstoreCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <% store.images.forEach((img, i) => {  %>
@@ -44,6 +44,7 @@
                     <strong>
                         <%= store.author.username%>
                     </strong>
+                    on <%= store.createdAt %>
                 </li>
                 <li class="list-group-item">🪙 <%= store.price%> vnd / person</li>
             </ul>
@@ -62,7 +63,7 @@
     </div>
 
 
-    <div class="col-md-6 order-1 order-md-2 mb-3">
+    <div class="col-md-6 mb-3">
         <div id='map'></div>
 
         <% if(currentUser) { %>
@@ -93,7 +94,9 @@
                     Looks good!
                 </div>
             </div>
-            <button class="btn btn-success">Submit</button>
+            <div class="d-grid gap-2 col-sm-12 col-md-3">
+                <button class="btn btn-success">Submit</button>
+            </div>
         </form>
         <% } %>
         <% for(let review of store.reviews) { %>
@@ -103,7 +106,7 @@
                     Rated: <%= review.rating %> stars
                 </p>
                 <h6 class="card-subtitle mb-2 text-muted">
-                    by <%= review.author.username %>
+                    by <%= review.author.username %> on <%= review.createdAt %>
                 </h6>
                 <p class="card-text">Review: <%= review.body %>
                 </p>

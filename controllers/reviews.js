@@ -2,7 +2,8 @@ import FoodStore from "../models/foodStore.js"
 import Review from "../models/review.js"
 
 import catchAsync from "../utils/catchAsync.js"
-import ExpressError from "../utils/ExpressError.js"
+import moment from 'moment/moment.js'
+
 
 export const postReview = catchAsync(async (req, res, next) => {
     // find store and create a new review from review form
@@ -11,7 +12,8 @@ export const postReview = catchAsync(async (req, res, next) => {
 
     // set author of review
     review.author = req.user._id
-
+    // set createdAt property of review
+    review.createdAt = moment().format("DD-MM-YYYY hh:mm:ss")
     // push to store schema and save review
     store.reviews.push(review)
     await review.save()

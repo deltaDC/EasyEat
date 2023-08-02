@@ -30,6 +30,7 @@ const opts = { toJSON: { virtuals: true } }
 const FoodStoreSchema = new Schema({
     title: String,
     images: [ImageSchema],
+    createdAt: String,
     geometry: {
         type: {
             type: String,

@@ -2,6 +2,8 @@ import mongoose from "mongoose"
 import FoodStore from "../models/foodStore.js"
 import { places, descriptors } from "./seedHelpers.js"
 import cities from "./cities.js"
+import moment from 'moment/moment.js'
+
 
 // connect local mongodb
 main().catch(err => console.log(err))
@@ -15,7 +17,7 @@ const sample = array => array[Math.floor(Math.random() * array.length)];
 // fake data to db
 const seedDB = async () => {
     await FoodStore.deleteMany({});
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 20; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const ranPrice = Math.floor(Math.random() * 100) + 1
         const store = new FoodStore({
@@ -41,6 +43,7 @@ const seedDB = async () => {
                     cities[random1000].latitude
                 ]
             },
+            createdAt: moment().format("DD-MM-YYYY HH:mm:ss")
         })
         await store.save()
     }
