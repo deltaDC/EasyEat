@@ -4,12 +4,12 @@
 
 
 <div class="row">
-    <div class="col-6">
+    <div class="col-md-6 order-2 order-md-1">
         <div id="foodstoreCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <% store.images.forEach((img, i) => {  %>
                 <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-                    <img crossorigin="anonymous" src="<%= img.url%>" class="d-block w-100" alt="">
+                    <img crossorigin="anonymous" src="<%= img.url%>" class="d-block w-100 rounded-top" alt="">
                 </div>
                 <% }) %>
             </div>
@@ -41,9 +41,11 @@
                 </li>
                 <li class="list-group-item">
                     Submitted by
-                    <%= store.author.username%>
+                    <strong>
+                        <%= store.author.username%>
+                    </strong>
                 </li>
-                <li class="list-group-item">$<%= store.price%>/night</li>
+                <li class="list-group-item">🪙 <%= store.price%> vnd / person</li>
             </ul>
             <% if(currentUser && store.author.equals(currentUser._id)) { %>
             <div class="card-body">
@@ -53,14 +55,14 @@
                 </form>
             </div>
             <% } %>
-            <div class="card-footer text-muted">
+            <!-- <div class="card-footer text-muted">
                 2 days ago
-            </div>
+            </div> -->
         </div>
     </div>
 
 
-    <div class="col-6">
+    <div class="col-md-6 order-1 order-md-2 mb-3">
         <div id='map'></div>
 
         <% if(currentUser) { %>

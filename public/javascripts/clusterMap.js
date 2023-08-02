@@ -3,9 +3,9 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'cluster-map',
-    style: 'mapbox://styles/mapbox/light-v10',
-    center: [-103.59179687498357, 40.66995747013945],
-    zoom: 3
+    style: 'mapbox://styles/mapbox/streets-v12',
+    center: [105.850715, 21.028524],
+    zoom: 13
 })
 
 // https://docs.mapbox.com/mapbox-gl-js/example/navigation/

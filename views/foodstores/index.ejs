@@ -7,7 +7,9 @@
     <div class="row">
         <div class="col-md-4">
             <% if(store.images.length) { %>
-            <img crossorigin="anonymous" class="img-fluid" alt="" src="<%=store.images[0].url%>">
+            <a href="/foodstores/<%=store._id%>">
+                <img crossorigin="anonymous" class="img-fluid" alt="" src="<%=store.images[0].url%>">
+            </a>
             <% } else { %>
             <img crossorigin="anonymous" class="img-fluid" alt=""
                 src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/350018821_6361909343894186_9122810765016729458_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=JrjHLfzzO7EAX81gFe8&_nc_ht=scontent.fhan15-1.fna&oh=00_AfDpqX0392bpDL06pK6Kcc-aQ5xZfzhem5Ep8gwDnn1mSQ&oe=64CB4FA3">
@@ -16,12 +18,12 @@
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title">
-                    <%= store.title %>
+                    <a class="store-link" href="/foodstores/<%=store._id%>"><%= store.title %></a>
                 </h5>
                 <p class="card-text">
                     <%= store.description %>
                 </p>
-                <p class="card-text">
+                <p class="card-text grey-text">
                     <small class="text-muted">
                         <%= store.location%>
                     </small>

@@ -1,3 +1,9 @@
+:root {
+    --dark-blue: #14213d;
+    --orange: #fca311;
+    --grey-text: #e5e5e5;
+}
+
 #cluster-map {
     width: 100%;
     height: 500px;
@@ -6,4 +12,41 @@
 #map {
     width: 100%;
     height: 300px;
+}
+
+.grey-text {
+    color: var(--grey-text);
+}
+
+.store-link {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+}
+
+.store-link:hover {
+    color: var(--orange);
+}
+
+.carousel-item img {
+    width: 50vw;
+    height: 50vh;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.navbar,
+.footer {
+    background-color: var(--dark-blue);
+}
+
+.card-body .btn {
+    background-color: var(--dark-blue);
+    border: none;
+    color: white;
+}
+
+.nav-dark .navbar-toggler-icon {
+    background-color: #fff;
+    color: white;
 }
